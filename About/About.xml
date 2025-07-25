@@ -1,0 +1,9 @@
+<ModMetaData>
+  <name>Mouse Dolly Mapper</name>
+  <author>merthsoft</author>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+	<packageId>Merthsoft.MouseDollyMapper</packageId>
+  <description>Allows you to remap the mouse button used to dolly the camera around the map.</description>
+</ModMetaData>
