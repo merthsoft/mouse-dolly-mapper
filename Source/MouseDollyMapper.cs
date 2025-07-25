@@ -10,7 +10,7 @@ public class MouseDollyMapper : Mod
     public static MouseDollyMapperSettings Settings;
 
     public static bool DollyButtonPressed()
-        => ExtendedMouseDrag.MouseDrag(Settings.MouseDollyButton) && (!SteamDeck.IsSteamDeck || !Find.Selector.AnyPawnSelected);
+        => MouseButtonTracker.MouseDrag(Settings.MouseDollyButton) && (!SteamDeck.IsSteamDeck || !Find.Selector.AnyPawnSelected);
 
 
     public MouseDollyMapper(ModContentPack content) : base(content)
