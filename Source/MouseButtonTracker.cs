@@ -5,7 +5,7 @@ namespace Merthsoft.MouseDollyMapper;
 
 public class MouseButtonTracker : GameComponent
 {
-    public static readonly bool[] ButtonHeld = new bool[8];
+    public static readonly bool[] ButtonHeld = new bool[5];
 
     public MouseButtonTracker(Game _) { }
 
