@@ -7,11 +7,13 @@ namespace Merthsoft.MouseDollyMapper;
 
 public class MouseDollyMapper : Mod
 {
-    public static MouseDollyMapperSettings Settings;
+    private static MouseDollyMapperSettings Settings;
+
+    public static int MouseDollyButton => Settings.MouseDollyButton;
 
     public static bool DollyButtonPressed()
         => !SteamDeck.IsSteamDeck 
-        && MouseButtonTracker.MouseDrag(Settings.MouseDollyButton) 
+        && MouseButtonTracker.IsMouseDragged()
         && !ColonistSelectedCheck();
 
     private static bool ColonistSelectedCheck()

@@ -5,31 +5,25 @@ namespace Merthsoft.MouseDollyMapper;
 
 public class MouseButtonTracker : GameComponent
 {
-    public static readonly bool[] ButtonHeld = new bool[5];
+    private static bool ButtonHeld = false;
     private static Vector2 lastPos = Vector2.zero;
 
     public MouseButtonTracker(Game _) { }
 
     public override void GameComponentUpdate()
     {
-        for (int i = 0; i < ButtonHeld.Length; i++)
+        try
         {
-            try
-            {
-                ButtonHeld[i] = Input.GetMouseButton(i);
-            } catch
-            {
-                ButtonHeld[i] = false;
-            }
+            ButtonHeld = Input.GetMouseButton(MouseDollyMapper.MouseDollyButton);
+        } catch
+        {
+            ButtonHeld = false;
         }
     }
 
-    public static bool MouseDrag(int button)
+    public static bool IsMouseDragged()
     {
-        if (button < 0 || button >= ButtonHeld.Length)
-            return false;
-
-        if (!MouseButtonTracker.ButtonHeld[button])
+        if (ButtonHeld)
             return false;
 
         var now = Event.current.mousePosition;
