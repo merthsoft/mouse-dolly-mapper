@@ -23,7 +23,7 @@ public class MouseButtonTracker : GameComponent
 
     public static bool IsMouseDragged()
     {
-        if (ButtonHeld)
+        if (!ButtonHeld)
             return false;
 
         var now = Event.current.mousePosition;
