@@ -10,8 +10,12 @@ public class MouseDollyMapper : Mod
     public static MouseDollyMapperSettings Settings;
 
     public static bool DollyButtonPressed()
-        => MouseButtonTracker.MouseDrag(Settings.MouseDollyButton) && (!SteamDeck.IsSteamDeck || !Find.Selector.AnyPawnSelected);
+        => !SteamDeck.IsSteamDeck 
+        && MouseButtonTracker.MouseDrag(Settings.MouseDollyButton) 
+        && !ColonistSelectedCheck();
 
+    private static bool ColonistSelectedCheck()
+        => Settings.DisablePanningWhenColonistIsSelected && Find.Selector.AnyPawnSelected;
 
     public MouseDollyMapper(ModContentPack content) : base(content)
     {
@@ -40,11 +44,10 @@ public class MouseDollyMapper : Mod
 
         listing.Label($"Current Dolly Button: {ButtonName(Settings.MouseDollyButton)}");
 
-        Rect buttonRect = listing.GetRect(30f);
-
+        var buttonRect = listing.GetRect(30f);
         if (!waitingForClick)
         {
-            if (Widgets.ButtonText(buttonRect, "Set Dolly Button"))
+            if (Widgets.ButtonText(buttonRect, "Set dolly button"))
             {
                 waitingForClick = true;
             }
@@ -59,6 +62,11 @@ public class MouseDollyMapper : Mod
                 Event.current.Use();
             }
         }
+
+        var checkRect = listing.GetRect(30f);
+        var disable = Settings.DisablePanningWhenColonistIsSelected;
+        Widgets.CheckboxLabeled(checkRect, "Disable dollying when colonist is selected.", ref disable);
+        Settings.DisablePanningWhenColonistIsSelected = disable;
 
         listing.End();
     }

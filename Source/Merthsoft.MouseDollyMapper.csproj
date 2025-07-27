@@ -3,13 +3,13 @@
     <TargetFramework>net48</TargetFramework>
     <LangVersion>preview</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-	  <OutputPath>../1.6/Assemblies</OutputPath>
 	  <OutDir>../1.6/Assemblies</OutDir>
+	  <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+	  <DebugSymbols>false</DebugSymbols>
+	  <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
-	  <PackageReference Include="Lib.Harmony" Version="2.3.6">
-		  <Private>False</Private>
-	  </PackageReference>
+	  <PackageReference Include="Lib.Harmony" Version="2.3.6"/>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
