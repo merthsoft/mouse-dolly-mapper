@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <Merthsoft.MouseDollyMapper.SettingsCategory>Mouse Dolly Mapper</Merthsoft.MouseDollyMapper.SettingsCategory>
+
+  <Merthsoft.MouseDollyMapper.ButtonLeft>Left (0)</Merthsoft.MouseDollyMapper.ButtonLeft>
+  <Merthsoft.MouseDollyMapper.ButtonRight>Right (1)</Merthsoft.MouseDollyMapper.ButtonRight>
+  <Merthsoft.MouseDollyMapper.ButtonMiddle>Middle (2)</Merthsoft.MouseDollyMapper.ButtonMiddle>
+  <Merthsoft.MouseDollyMapper.ButtonBack>Back (3)</Merthsoft.MouseDollyMapper.ButtonBack>
+  <Merthsoft.MouseDollyMapper.ButtonForward>Forward (4)</Merthsoft.MouseDollyMapper.ButtonForward>
+  <Merthsoft.MouseDollyMapper.ButtonGeneric>Mouse {0}</Merthsoft.MouseDollyMapper.ButtonGeneric>
+
+  <Merthsoft.MouseDollyMapper.CurrentDollyButton>Current dolly button: {0}</Merthsoft.MouseDollyMapper.CurrentDollyButton>
+  <Merthsoft.MouseDollyMapper.SetDollyButton>Set dolly button</Merthsoft.MouseDollyMapper.SetDollyButton>
+  <Merthsoft.MouseDollyMapper.ClickAnyMouseButton>Click any mouse button...</Merthsoft.MouseDollyMapper.ClickAnyMouseButton>
+  <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>Disable dollying when colonist is selected.</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
+</LanguageData>

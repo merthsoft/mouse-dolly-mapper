@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <Merthsoft.MouseDollyMapper.SettingsCategory>Mapování posunu kamery myší</Merthsoft.MouseDollyMapper.SettingsCategory>
+
+  <Merthsoft.MouseDollyMapper.ButtonLeft>Levé tlačítko (0)</Merthsoft.MouseDollyMapper.ButtonLeft>
+  <Merthsoft.MouseDollyMapper.ButtonRight>Pravé tlačítko (1)</Merthsoft.MouseDollyMapper.ButtonRight>
+  <Merthsoft.MouseDollyMapper.ButtonMiddle>Prostřední tlačítko (2)</Merthsoft.MouseDollyMapper.ButtonMiddle>
+  <Merthsoft.MouseDollyMapper.ButtonBack>Tlačítko zpět (3)</Merthsoft.MouseDollyMapper.ButtonBack>
+  <Merthsoft.MouseDollyMapper.ButtonForward>Tlačítko vpřed (4)</Merthsoft.MouseDollyMapper.ButtonForward>
+  <Merthsoft.MouseDollyMapper.ButtonGeneric>Myš {0}</Merthsoft.MouseDollyMapper.ButtonGeneric>
+
+  <Merthsoft.MouseDollyMapper.CurrentDollyButton>Aktuální tlačítko pro posun kamery: {0}</Merthsoft.MouseDollyMapper.CurrentDollyButton>
+  <Merthsoft.MouseDollyMapper.SetDollyButton>Nastavit tlačítko pro posun kamery</Merthsoft.MouseDollyMapper.SetDollyButton>
+  <Merthsoft.MouseDollyMapper.ClickAnyMouseButton>Klikněte na libovolné tlačítko myši...</Merthsoft.MouseDollyMapper.ClickAnyMouseButton>
+  <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>Zakázat posun kamery, pokud je vybrán kolonista.</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
+</LanguageData>

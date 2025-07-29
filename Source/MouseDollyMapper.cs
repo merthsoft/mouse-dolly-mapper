@@ -12,7 +12,7 @@ public class MouseDollyMapper : Mod
     public static int MouseDollyButton => Settings.MouseDollyButton;
 
     public static bool DollyButtonPressed()
-        => !SteamDeck.IsSteamDeck 
+        => !SteamDeck.IsSteamDeck
         && MouseButtonTracker.IsMouseDragged()
         && !ColonistSelectedCheck();
 
@@ -26,37 +26,38 @@ public class MouseDollyMapper : Mod
         harmony.PatchAll();
     }
 
-    public override string SettingsCategory() => "Mouse Dolly Mapper";
+    public override string SettingsCategory()
+        => "Merthsoft.MouseDollyMapper.SettingsCategory".Translate();
 
     private string ButtonName(int i) => i switch
     {
-        0 => "Left (0)",
-        1 => "Right (1)",
-        2 => "Middle (2)",
-        3 => $"Back (3)",
-        4 => $"Forward (4)",
-        _ => $"Mouse {i}",
+        0 => "Merthsoft.MouseDollyMapper.ButtonLeft".Translate(),
+        1 => "Merthsoft.MouseDollyMapper.ButtonRight".Translate(),
+        2 => "Merthsoft.MouseDollyMapper.ButtonMiddle".Translate(),
+        3 => "Merthsoft.MouseDollyMapper.ButtonBack".Translate(),
+        4 => "Merthsoft.MouseDollyMapper.ButtonForward".Translate(),
+        _ => "Merthsoft.MouseDollyMapper.ButtonGeneric".Translate(i),
     };
 
     private bool waitingForClick = false;
     public override void DoSettingsWindowContents(Rect inRect)
     {
-        Listing_Standard listing = new Listing_Standard();
+        var listing = new Listing_Standard();
         listing.Begin(inRect);
 
-        listing.Label($"Current Dolly Button: {ButtonName(Settings.MouseDollyButton)}");
+        listing.Label("Merthsoft.MouseDollyMapper.CurrentDollyButton".Translate(ButtonName(Settings.MouseDollyButton)));
 
         var buttonRect = listing.GetRect(30f);
         if (!waitingForClick)
         {
-            if (Widgets.ButtonText(buttonRect, "Set dolly button"))
+            if (Widgets.ButtonText(buttonRect, "Merthsoft.MouseDollyMapper.SetDollyButton".Translate()))
             {
                 waitingForClick = true;
             }
         }
         else
         {
-            Widgets.Label(buttonRect, "Click any mouse button...");
+            Widgets.Label(buttonRect, "Merthsoft.MouseDollyMapper.ClickAnyMouseButton".Translate());
             if (waitingForClick && Event.current.type == EventType.MouseDown)
             {
                 Settings.MouseDollyButton = Event.current.button;
@@ -67,10 +68,9 @@ public class MouseDollyMapper : Mod
 
         var checkRect = listing.GetRect(30f);
         var disable = Settings.DisablePanningWhenColonistIsSelected;
-        Widgets.CheckboxLabeled(checkRect, "Disable dollying when colonist is selected.", ref disable);
+        Widgets.CheckboxLabeled(checkRect, "Merthsoft.MouseDollyMapper.DisableWhenColonistSelected".Translate(), ref disable);
         Settings.DisablePanningWhenColonistIsSelected = disable;
 
         listing.End();
     }
-
 }
