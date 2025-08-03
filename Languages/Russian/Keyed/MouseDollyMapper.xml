@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <Merthsoft.MouseDollyMapper.SettingsCategory>Назначение кнопок мыши для перемещения</Merthsoft.MouseDollyMapper.SettingsCategory>
+
+  <Merthsoft.MouseDollyMapper.ButtonLeft>Левая (0)</Merthsoft.MouseDollyMapper.ButtonLeft>
+  <Merthsoft.MouseDollyMapper.ButtonRight>Правая (1)</Merthsoft.MouseDollyMapper.ButtonRight>
+  <Merthsoft.MouseDollyMapper.ButtonMiddle>Средняя (2)</Merthsoft.MouseDollyMapper.ButtonMiddle>
+  <Merthsoft.MouseDollyMapper.ButtonBack>Назад (3)</Merthsoft.MouseDollyMapper.ButtonBack>
+  <Merthsoft.MouseDollyMapper.ButtonForward>Вперёд (4)</Merthsoft.MouseDollyMapper.ButtonForward>
+  <Merthsoft.MouseDollyMapper.ButtonGeneric>Кнопка мыши {0}</Merthsoft.MouseDollyMapper.ButtonGeneric>
+
+  <Merthsoft.MouseDollyMapper.CurrentDollyButton>Текущая кнопка для перемещения: {0}</Merthsoft.MouseDollyMapper.CurrentDollyButton>
+  <Merthsoft.MouseDollyMapper.SetDollyButton>Назначить кнопку для перемещения</Merthsoft.MouseDollyMapper.SetDollyButton>
+  <Merthsoft.MouseDollyMapper.ClickAnyMouseButton>Нажмите любую кнопку мыши.</Merthsoft.MouseDollyMapper.ClickAnyMouseButton>
+  <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>Отключить перемещение при выборе колониста.</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
+  <Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>Отключить меню архитектора при правой кнопке мыши.</Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>
+  <Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>Скрывать основные кнопки интерфейса при перетаскивании.</Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>
+</LanguageData>

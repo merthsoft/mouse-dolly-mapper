@@ -12,6 +12,10 @@ public class MouseDollyMapper : Mod
 
     public static int MouseDollyButton => Settings.MouseDollyButton;
 
+    public static bool HideMainUiButtons()
+        => Settings.HideMainUiButtonsWhenDragging
+        && MouseButtonTracker.HasDragged();
+
     public static bool RightClickOnWorldMap()
         => Find.Selector.NumSelected == 0
         && Event.current.type == EventType.MouseDown
@@ -86,6 +90,12 @@ public class MouseDollyMapper : Mod
             rect: checkRect, 
             label: "Merthsoft.MouseDollyMapper.DisableWhenColonistSelected".Translate(), 
             checkOn: ref Settings.DisablePanningWhenColonistIsSelected);
+
+        var hideMainUiWhenDraggingRect = listing.GetRect(30f);
+        Widgets.CheckboxLabeled(
+            rect: hideMainUiWhenDraggingRect,
+            label: "Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging".Translate(),
+            checkOn: ref Settings.HideMainUiButtonsWhenDragging);
 
         listing.End();
     }

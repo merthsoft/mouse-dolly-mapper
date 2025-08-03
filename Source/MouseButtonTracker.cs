@@ -6,6 +6,7 @@ namespace Merthsoft.MouseDollyMapper;
 public class MouseButtonTracker : GameComponent
 {
     private static bool ButtonHeld = false;
+    private static bool DragStart = false;
     private static Vector2 lastPos = Vector2.zero;
 
     public MouseButtonTracker(Game _) { }
@@ -19,6 +20,9 @@ public class MouseButtonTracker : GameComponent
         {
             ButtonHeld = false;
         }
+
+        if (!ButtonHeld)
+            DragStart = false;
     }
 
     public static bool IsMouseDragged()
@@ -26,10 +30,14 @@ public class MouseButtonTracker : GameComponent
         if (!ButtonHeld)
             return false;
 
+        DragStart = true;
         var now = Event.current.mousePosition;
         var moved = now != lastPos;
         lastPos = now;
 
         return moved;
     }
+
+    public static bool HasDragged()
+        => ButtonHeld && DragStart;
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <Merthsoft.MouseDollyMapper.SettingsCategory>Mapeador de Arrastre del Ratón</Merthsoft.MouseDollyMapper.SettingsCategory>
+
+  <Merthsoft.MouseDollyMapper.ButtonLeft>Izquierdo (0)</Merthsoft.MouseDollyMapper.ButtonLeft>
+  <Merthsoft.MouseDollyMapper.ButtonRight>Derecho (1)</Merthsoft.MouseDollyMapper.ButtonRight>
+  <Merthsoft.MouseDollyMapper.ButtonMiddle>Central (2)</Merthsoft.MouseDollyMapper.ButtonMiddle>
+  <Merthsoft.MouseDollyMapper.ButtonBack>Atrás (3)</Merthsoft.MouseDollyMapper.ButtonBack>
+  <Merthsoft.MouseDollyMapper.ButtonForward>Adelante (4)</Merthsoft.MouseDollyMapper.ButtonForward>
+  <Merthsoft.MouseDollyMapper.ButtonGeneric>Ratón {0}</Merthsoft.MouseDollyMapper.ButtonGeneric>
+
+  <Merthsoft.MouseDollyMapper.CurrentDollyButton>Botón actual de arrastre: {0}</Merthsoft.MouseDollyMapper.CurrentDollyButton>
+  <Merthsoft.MouseDollyMapper.SetDollyButton>Configurar botón de arrastre</Merthsoft.MouseDollyMapper.SetDollyButton>
+  <Merthsoft.MouseDollyMapper.ClickAnyMouseButton>Haz clic en cualquier botón del ratón.</Merthsoft.MouseDollyMapper.ClickAnyMouseButton>
+  <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>Desactivar arrastre cuando un colono esté seleccionado.</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
+  <Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>Desactivar el menú de arquitecto con el botón derecho del ratón.</Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>
+  <Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>Ocultar los botones principales de la interfaz al arrastrar.</Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>
+</LanguageData>

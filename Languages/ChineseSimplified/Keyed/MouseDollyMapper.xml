@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <Merthsoft.MouseDollyMapper.SettingsCategory>鼠标拖拽映射器</Merthsoft.MouseDollyMapper.SettingsCategory>
+
+  <Merthsoft.MouseDollyMapper.ButtonLeft>左键 (0)</Merthsoft.MouseDollyMapper.ButtonLeft>
+  <Merthsoft.MouseDollyMapper.ButtonRight>右键 (1)</Merthsoft.MouseDollyMapper.ButtonRight>
+  <Merthsoft.MouseDollyMapper.ButtonMiddle>中键 (2)</Merthsoft.MouseDollyMapper.ButtonMiddle>
+  <Merthsoft.MouseDollyMapper.ButtonBack>后退键 (3)</Merthsoft.MouseDollyMapper.ButtonBack>
+  <Merthsoft.MouseDollyMapper.ButtonForward>前进键 (4)</Merthsoft.MouseDollyMapper.ButtonForward>
+  <Merthsoft.MouseDollyMapper.ButtonGeneric>鼠标 {0}</Merthsoft.MouseDollyMapper.ButtonGeneric>
+
+  <Merthsoft.MouseDollyMapper.CurrentDollyButton>当前拖拽按钮：{0}</Merthsoft.MouseDollyMapper.CurrentDollyButton>
+  <Merthsoft.MouseDollyMapper.SetDollyButton>设置拖拽按钮</Merthsoft.MouseDollyMapper.SetDollyButton>
+  <Merthsoft.MouseDollyMapper.ClickAnyMouseButton>点击任意鼠标按钮。</Merthsoft.MouseDollyMapper.ClickAnyMouseButton>
+  <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>当选择殖民者时禁用拖拽。</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
+  <Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>右键时禁用建筑菜单。</Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>
+  <Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>拖动时隐藏主界面按钮。</Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>
+</LanguageData>

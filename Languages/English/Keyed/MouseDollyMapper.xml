@@ -14,4 +14,5 @@
   <Merthsoft.MouseDollyMapper.ClickAnyMouseButton>Click any mouse button...</Merthsoft.MouseDollyMapper.ClickAnyMouseButton>
   <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>Disable dollying when colonist is selected.</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
   <Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>Disable architect menu on right mouse.</Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>
+  <Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>Hide main UI buttons when dragging.</Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>
 </LanguageData>
