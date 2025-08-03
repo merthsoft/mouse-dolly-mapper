@@ -1,7 +1,9 @@
 using HarmonyLib;
 using RimWorld;
+using RimWorld.Planet;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using UnityEngine;
 using Verse;
 using Verse.Steam;
 

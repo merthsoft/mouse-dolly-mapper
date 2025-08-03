@@ -13,4 +13,5 @@
   <Merthsoft.MouseDollyMapper.SetDollyButton>Nastavit tlačítko pro posun kamery</Merthsoft.MouseDollyMapper.SetDollyButton>
   <Merthsoft.MouseDollyMapper.ClickAnyMouseButton>Klikněte na libovolné tlačítko myši...</Merthsoft.MouseDollyMapper.ClickAnyMouseButton>
   <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>Zakázat posun kamery, pokud je vybrán kolonista.</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
+  <Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>Zakázat nabídku Architekt po kliknutí pravým tlačítkem myši.</Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>
 </LanguageData>
