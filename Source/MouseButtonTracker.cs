@@ -30,10 +30,12 @@ public class MouseButtonTracker : GameComponent
         if (!ButtonHeld)
             return false;
 
-        DragStart = true;
         var now = Event.current.mousePosition;
         var moved = now != lastPos;
         lastPos = now;
+        DragStart |= moved;
+        if (moved)
+            Event.current.Use();
 
         return moved;
     }

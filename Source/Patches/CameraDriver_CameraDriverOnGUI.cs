@@ -10,7 +10,7 @@ using Verse.Steam;
 namespace Merthsoft.MouseDollyMapper;
 
 [HarmonyPatch(typeof(CameraDriver), nameof(CameraDriver.CameraDriverOnGUI))]
-public static class CameraDriverPatch
+public static class CameraDriver_CameraDriverOnGUI
 {
     static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
@@ -37,7 +37,7 @@ public static class CameraDriverPatch
 
         if (!codes.IsValid)
         {
-            Log.Error("[MouseDollyMapper] Could not find pattern in CameraDriverOnGUI.");
+            Log.Error("Could not find pattern in CameraDriverOnGUI.");
             return instructions;
         }
         

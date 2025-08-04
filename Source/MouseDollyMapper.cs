@@ -11,6 +11,7 @@ public class MouseDollyMapper : Mod
     private static MouseDollyMapperSettings Settings;
 
     public static int MouseDollyButton => Settings.MouseDollyButton;
+    public static bool DisableArchitectMenuOnRightMouse => Settings.DisableArchitectMenuOnRightMouse;
 
     public static bool HideMainUiButtons()
         => Settings.HideMainUiButtonsWhenDragging

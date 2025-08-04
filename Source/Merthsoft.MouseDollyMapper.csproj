@@ -9,7 +9,7 @@
 	  <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
-	  <PackageReference Include="Lib.Harmony" Version="2.3.6"/>
+	  <PackageReference Include="Lib.Harmony" Version="2.3.6" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
