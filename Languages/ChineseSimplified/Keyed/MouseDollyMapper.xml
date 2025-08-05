@@ -13,6 +13,15 @@
   <Merthsoft.MouseDollyMapper.SetDollyButton>设置拖拽按钮</Merthsoft.MouseDollyMapper.SetDollyButton>
   <Merthsoft.MouseDollyMapper.ClickAnyMouseButton>点击任意鼠标按钮。</Merthsoft.MouseDollyMapper.ClickAnyMouseButton>
   <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>当选择殖民者时禁用拖拽。</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
-  <Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>右键时禁用建筑菜单。</Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>
-  <Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>拖动时隐藏主界面按钮。</Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>
+
+  <Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>建筑菜单模式：</Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>
+  <Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>原版（鼠标按下时切换）</Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>
+  <Merthsoft.MouseDollyMapper.ArchitectMenuMode.Disable>禁用</Merthsoft.MouseDollyMapper.ArchitectMenuMode.Disable>
+  <Merthsoft.MouseDollyMapper.ArchitectMenuMode.ToggleOnClick>点击切换（鼠标抬起且未拖动）</Merthsoft.MouseDollyMapper.ArchitectMenuMode.ToggleOnClick>
+
+  <Merthsoft.MouseDollyMapper.UiHidingModeLabel>UI 隐藏模式：</Merthsoft.MouseDollyMapper.UiHidingModeLabel>
+  <Merthsoft.MouseDollyMapper.UiHidingMode.None>无</Merthsoft.MouseDollyMapper.UiHidingMode.None>
+  <Merthsoft.MouseDollyMapper.UiHidingMode.ArchitectMenu>建筑菜单</Merthsoft.MouseDollyMapper.UiHidingMode.ArchitectMenu>
+  <Merthsoft.MouseDollyMapper.UiHidingMode.OpenTab>打开的标签页</Merthsoft.MouseDollyMapper.UiHidingMode.OpenTab>
+  <Merthsoft.MouseDollyMapper.UiHidingMode.AllUi>所有界面</Merthsoft.MouseDollyMapper.UiHidingMode.AllUi>
 </LanguageData>

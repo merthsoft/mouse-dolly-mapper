@@ -13,6 +13,18 @@
   <Merthsoft.MouseDollyMapper.SetDollyButton>Set dolly button</Merthsoft.MouseDollyMapper.SetDollyButton>
   <Merthsoft.MouseDollyMapper.ClickAnyMouseButton>Click any mouse button...</Merthsoft.MouseDollyMapper.ClickAnyMouseButton>
   <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>Disable dollying when colonist is selected.</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
+  
   <Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>Disable architect menu on right mouse.</Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>
   <Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>Hide main UI buttons when dragging.</Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>
+
+  <Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>Architect menu mode:</Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>
+  <Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>Vanilla (toggle on mouse down)</Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>
+  <Merthsoft.MouseDollyMapper.ArchitectMenuMode.Disable>Disabled</Merthsoft.MouseDollyMapper.ArchitectMenuMode.Disable>
+  <Merthsoft.MouseDollyMapper.ArchitectMenuMode.ToggleOnClick>Toggle on click (mouse up without drag)</Merthsoft.MouseDollyMapper.ArchitectMenuMode.ToggleOnClick>
+  
+  <Merthsoft.MouseDollyMapper.UiHidingModeLabel>UI hiding mode:</Merthsoft.MouseDollyMapper.UiHidingModeLabel>
+  <Merthsoft.MouseDollyMapper.UiHidingMode.None>None</Merthsoft.MouseDollyMapper.UiHidingMode.None>
+  <Merthsoft.MouseDollyMapper.UiHidingMode.ArchitectMenu>Architect menu</Merthsoft.MouseDollyMapper.UiHidingMode.ArchitectMenu>
+  <Merthsoft.MouseDollyMapper.UiHidingMode.OpenTab>Open tab</Merthsoft.MouseDollyMapper.UiHidingMode.OpenTab>
+  <Merthsoft.MouseDollyMapper.UiHidingMode.AllUi>All UI</Merthsoft.MouseDollyMapper.UiHidingMode.AllUi>
 </LanguageData>

@@ -7,7 +7,7 @@ using UnityEngine;
 using Verse;
 using Verse.Steam;
 
-namespace Merthsoft.MouseDollyMapper;
+namespace Merthsoft.MouseDollyMapper.Patches;
 
 [HarmonyPatch(typeof(CameraDriver), nameof(CameraDriver.CameraDriverOnGUI))]
 public static class CameraDriver_CameraDriverOnGUI

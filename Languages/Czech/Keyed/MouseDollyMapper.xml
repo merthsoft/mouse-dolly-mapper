@@ -13,6 +13,16 @@
   <Merthsoft.MouseDollyMapper.SetDollyButton>Nastavit tlačítko pro posun kamery</Merthsoft.MouseDollyMapper.SetDollyButton>
   <Merthsoft.MouseDollyMapper.ClickAnyMouseButton>Klikněte na libovolné tlačítko myši...</Merthsoft.MouseDollyMapper.ClickAnyMouseButton>
   <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>Zakázat posun kamery, pokud je vybrán kolonista.</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
-  <Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>Zakázat nabídku Architekt po kliknutí pravým tlačítkem myši.</Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>
-  <Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>Při přetahování skrýt hlavní tlačítka UI</Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>
+  
+  <Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>Režim architektonického menu:</Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>
+  <Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>Vanilla (přepnout při stisku myši)</Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>
+  <Merthsoft.MouseDollyMapper.ArchitectMenuMode.Disable>Zakázáno</Merthsoft.MouseDollyMapper.ArchitectMenuMode.Disable>
+  <Merthsoft.MouseDollyMapper.ArchitectMenuMode.ToggleOnClick>Přepnout kliknutím (uvolnění myši bez tažení)</Merthsoft.MouseDollyMapper.ArchitectMenuMode.ToggleOnClick>
+
+  <Merthsoft.MouseDollyMapper.UiHidingModeLabel>Režim skrývání UI:</Merthsoft.MouseDollyMapper.UiHidingModeLabel>
+  <Merthsoft.MouseDollyMapper.UiHidingMode.None>Žádný</Merthsoft.MouseDollyMapper.UiHidingMode.None>
+  <Merthsoft.MouseDollyMapper.UiHidingMode.ArchitectMenu>Architektonické menu</Merthsoft.MouseDollyMapper.UiHidingMode.ArchitectMenu>
+  <Merthsoft.MouseDollyMapper.UiHidingMode.OpenTab>Otevřená karta</Merthsoft.MouseDollyMapper.UiHidingMode.OpenTab>
+<Merthsoft.MouseDollyMapper.UiHidingMode.AllUi>Celé UI</Merthsoft.MouseDollyMapper.UiHidingMode.AllUi>
+
 </LanguageData>

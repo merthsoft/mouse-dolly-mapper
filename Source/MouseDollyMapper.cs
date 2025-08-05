@@ -1,5 +1,11 @@
 using HarmonyLib;
+using Merthsoft.MouseDollyMapper.Enums;
+using Merthsoft.MouseDollyMapper.Patches;
+using RimWorld;
 using RimWorld.Planet;
+using System;
+using System.Reflection;
+using System.Runtime;
 using UnityEngine;
 using Verse;
 using Verse.Steam;
@@ -11,19 +17,66 @@ public class MouseDollyMapper : Mod
     private static MouseDollyMapperSettings Settings;
 
     public static int MouseDollyButton => Settings.MouseDollyButton;
-    public static bool DisableArchitectMenuOnRightMouse => Settings.DisableArchitectMenuOnRightMouse;
-
+    
     public static bool HideMainUiButtons()
-        => Settings.HideMainUiButtonsWhenDragging
+        => Settings.UiHidingMode == UiHidingMode.AllUi
         && MouseButtonTracker.HasDragged();
 
-    public static bool RightClickOnWorldMap()
+    public static bool HideOpenTab()
+        => Settings.UiHidingMode == UiHidingMode.OpenTab
+        && MouseButtonTracker.HasDragged();
+
+    private static bool MouseUpArchitectMenuCheck()
         => Find.Selector.NumSelected == 0
-        && Event.current.type == EventType.MouseDown
+        && Event.current.type == EventType.MouseUp
+        && !MouseButtonTracker.HasDragged()
         && Event.current.button == 1
         && !WorldRendererUtility.WorldSelected
-        && (!SteamDeck.IsSteamDeck || !Input.GetMouseButton(2))
-        && (MouseDollyButton != 1 || !Settings.DisableArchitectMenuOnRightMouse);
+        && (!SteamDeck.IsSteamDeck || !Input.GetMouseButton(2));
+
+    public static bool SkipRightClickOnWorldMap(MainTabsRoot mainTabsRoot)
+    {
+        if (!(MouseDollyButton == 1 && Event.current.button == 1))
+            return false;
+
+        switch (Settings.ArchitectMenuMode)
+        {
+            case ArchitectMenuMode.Vanilla:
+                return false;
+            case ArchitectMenuMode.Disable:
+                return true;
+            default:
+                HandleLowPriorityShortcuts(mainTabsRoot);
+                return true;
+        }
+    }
+
+    private static MethodInfo AutoCloseInspectionTabIfNothingSelectedMethod
+        = AccessTools.Method(typeof(MainTabsRoot), "AutoCloseInspectionTabIfNothingSelected");
+
+    private static void HandleLowPriorityShortcuts(MainTabsRoot mainTabsRoot)
+    {
+        if (MouseButtonTracker.HasDragged())
+            return;
+
+        AutoCloseInspectionTabIfNothingSelectedMethod.Invoke(mainTabsRoot, [true]);
+        
+        if (Find.Selector.NumSelected == 0 && Event.current.type == EventType.MouseUp && Event.current.button == 1 && !WorldRendererUtility.WorldSelected && (!SteamDeck.IsSteamDeck || !Input.GetMouseButton(2)))
+        {
+            Event.current.Use();
+            MainButtonDefOf.Architect.Worker.InterfaceTryActivate();
+        }
+        
+        if (mainTabsRoot.OpenTab != null && mainTabsRoot.OpenTab != MainButtonDefOf.Inspect && Event.current.type == EventType.MouseUp && Event.current.button != 2)
+        {
+            mainTabsRoot.EscapeCurrentTab(true);
+            if (Event.current.button == 0)
+            {
+                Find.Selector.ClearSelection();
+                Find.WorldSelector.ClearSelection();
+            }
+        }
+    }
 
     public static bool DollyButtonPressed()
         => !SteamDeck.IsSteamDeck
@@ -58,17 +111,16 @@ public class MouseDollyMapper : Mod
 
         listing.Label("Merthsoft.MouseDollyMapper.CurrentDollyButton".Translate(ButtonName(Settings.MouseDollyButton)));
 
-        var buttonRect = listing.GetRect(30f);
         if (!waitingForClick)
         {
-            if (Widgets.ButtonText(buttonRect, "Merthsoft.MouseDollyMapper.SetDollyButton".Translate()))
+            if (listing.ButtonText("Merthsoft.MouseDollyMapper.SetDollyButton".Translate()))
             {
                 waitingForClick = true;
             }
         }
         else
         {
-            Widgets.Label(buttonRect, "Merthsoft.MouseDollyMapper.ClickAnyMouseButton".Translate());
+            listing.Label("Merthsoft.MouseDollyMapper.ClickAnyMouseButton".Translate());
             if (waitingForClick && Event.current.type == EventType.MouseDown)
             {
                 Settings.MouseDollyButton = Event.current.button;
@@ -79,25 +131,46 @@ public class MouseDollyMapper : Mod
 
         if (Settings.MouseDollyButton == 1)
         {
-            var disableArchitectCheckRect = listing.GetRect(30f);
-            Widgets.CheckboxLabeled(
-                rect: disableArchitectCheckRect,
-                label: "Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse".Translate(),
-                checkOn: ref Settings.DisableArchitectMenuOnRightMouse);
+            listing.Label("Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel".Translate());
+
+            foreach (ArchitectMenuMode mode in Enum.GetValues(typeof(ArchitectMenuMode)))
+            {
+                var isSelected = (Settings.ArchitectMenuMode == mode);
+                if (listing.RadioButton("\t" + ArchitectMenuModeString(mode), isSelected))
+                {
+                    Settings.ArchitectMenuMode = mode;
+                }
+            }
         }
 
-        var checkRect = listing.GetRect(30f);
-        Widgets.CheckboxLabeled(
-            rect: checkRect, 
+        listing.GapLine();
+
+        listing.CheckboxLabeled(
             label: "Merthsoft.MouseDollyMapper.DisableWhenColonistSelected".Translate(), 
             checkOn: ref Settings.DisablePanningWhenColonistIsSelected);
 
-        var hideMainUiWhenDraggingRect = listing.GetRect(30f);
-        Widgets.CheckboxLabeled(
-            rect: hideMainUiWhenDraggingRect,
-            label: "Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging".Translate(),
-            checkOn: ref Settings.HideMainUiButtonsWhenDragging);
+        listing.GapLine();
+
+        listing.Label("Merthsoft.MouseDollyMapper.UiHidingModeLabel".Translate());
+
+        foreach (UiHidingMode mode in Enum.GetValues(typeof(UiHidingMode)))
+        {
+            if (mode == UiHidingMode.ArchitectMenu)
+                continue;
+
+            var isSelected = (Settings.UiHidingMode == mode);
+            if (listing.RadioButton("\t" + UiHidingModeString(mode), isSelected))
+            {
+                Settings.UiHidingMode = mode;
+            }
+        }
 
         listing.End();
     }
+
+    private static string ArchitectMenuModeString(ArchitectMenuMode mode)
+        => $"Merthsoft.MouseDollyMapper.ArchitectMenuMode.{mode}".Translate();
+
+    private static string UiHidingModeString(UiHidingMode mode)
+        => $"Merthsoft.MouseDollyMapper.UiHidingMode.{mode}".Translate();
 }

@@ -13,6 +13,16 @@
   <Merthsoft.MouseDollyMapper.SetDollyButton>Назначить кнопку для перемещения</Merthsoft.MouseDollyMapper.SetDollyButton>
   <Merthsoft.MouseDollyMapper.ClickAnyMouseButton>Нажмите любую кнопку мыши.</Merthsoft.MouseDollyMapper.ClickAnyMouseButton>
   <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>Отключить перемещение при выборе колониста.</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
-  <Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>Отключить меню архитектора при правой кнопке мыши.</Merthsoft.MouseDollyMapper.DisableArchitectOnRightMouse>
-  <Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>Скрывать основные кнопки интерфейса при перетаскивании.</Merthsoft.MouseDollyMapper.HideMainUiButtonsWhenDragging>
+ 
+  <Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>Режим меню архитектора:</Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>
+  <Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>Обычный (переключение при нажатии мыши)</Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>
+  <Merthsoft.MouseDollyMapper.ArchitectMenuMode.Disable>Отключено</Merthsoft.MouseDollyMapper.ArchitectMenuMode.Disable>
+  <Merthsoft.MouseDollyMapper.ArchitectMenuMode.ToggleOnClick>Переключение по клику (отпускание мыши без перетаскивания)</Merthsoft.MouseDollyMapper.ArchitectMenuMode.ToggleOnClick>
+
+  <Merthsoft.MouseDollyMapper.UiHidingModeLabel>Режим скрытия интерфейса:</Merthsoft.MouseDollyMapper.UiHidingModeLabel>
+  <Merthsoft.MouseDollyMapper.UiHidingMode.None>Нет</Merthsoft.MouseDollyMapper.UiHidingMode.None>
+  <Merthsoft.MouseDollyMapper.UiHidingMode.ArchitectMenu>Меню архитектора</Merthsoft.MouseDollyMapper.UiHidingMode.ArchitectMenu>
+  <Merthsoft.MouseDollyMapper.UiHidingMode.AllUi>Весь интерфейс</Merthsoft.MouseDollyMapper.UiHidingMode.AllUi>
+  <Merthsoft.MouseDollyMapper.UiHidingMode.OpenTab>Открытая вкладка</Merthsoft.MouseDollyMapper.UiHidingMode.OpenTab>
+
 </LanguageData>

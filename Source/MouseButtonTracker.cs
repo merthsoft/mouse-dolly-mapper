@@ -27,6 +27,12 @@ public class MouseButtonTracker : GameComponent
 
     public static bool IsMouseDragged()
     {
+        if (MouseDollyMapper.MouseDollyButton <= 2)
+        {
+            DragStart |= UnityGUIBugsFixer.MouseDrag(MouseDollyMapper.MouseDollyButton);
+            return DragStart;
+        }
+
         if (!ButtonHeld)
             return false;
 
@@ -34,8 +40,6 @@ public class MouseButtonTracker : GameComponent
         var moved = now != lastPos;
         lastPos = now;
         DragStart |= moved;
-        if (moved)
-            Event.current.Use();
 
         return moved;
     }
