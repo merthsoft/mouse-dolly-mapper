@@ -12,8 +12,10 @@
   <Merthsoft.MouseDollyMapper.CurrentDollyButton>Текущая кнопка для перемещения: {0}</Merthsoft.MouseDollyMapper.CurrentDollyButton>
   <Merthsoft.MouseDollyMapper.SetDollyButton>Назначить кнопку для перемещения</Merthsoft.MouseDollyMapper.SetDollyButton>
   <Merthsoft.MouseDollyMapper.ClickAnyMouseButton>Нажмите любую кнопку мыши.</Merthsoft.MouseDollyMapper.ClickAnyMouseButton>
+  
   <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>Отключить перемещение при выборе колониста.</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
- 
+  <Merthsoft.MouseDollyMapper.DragDetectionDelay>Задержка обнаружения перетаскивания: {0} мс</Merthsoft.MouseDollyMapper.DragDetectionDelay>
+
   <Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>Режим меню архитектора:</Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>
   <Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>Обычный (переключение при нажатии мыши)</Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>
   <Merthsoft.MouseDollyMapper.ArchitectMenuMode.Disable>Отключено</Merthsoft.MouseDollyMapper.ArchitectMenuMode.Disable>

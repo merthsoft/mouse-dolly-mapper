@@ -10,12 +10,14 @@ public class MouseDollyMapperSettings : ModSettings
     public bool DisablePanningWhenColonistIsSelected = true;
     public ArchitectMenuMode ArchitectMenuMode = ArchitectMenuMode.Disable;
     public UiHidingMode UiHidingMode = UiHidingMode.AllUi;
+    public int DragDelayMs = 0;
 
     public override void ExposeData()
     {
-        Scribe_Values.Look(ref MouseDollyButton, "MouseDollyButton", 2, forceSave: true);
-        Scribe_Values.Look(ref DisablePanningWhenColonistIsSelected, "DisablePanningWhenColonistIsSelected", true, forceSave: true);
-        Scribe_Values.Look(ref ArchitectMenuMode, "ArchitectMenuMode", ArchitectMenuMode.ToggleOnClick, forceSave: true);
-        Scribe_Values.Look(ref UiHidingMode, "UiHidingMode", UiHidingMode.AllUi, forceSave: true);
+        Scribe_Values.Look(ref MouseDollyButton, "MouseDollyButton", 2);
+        Scribe_Values.Look(ref DisablePanningWhenColonistIsSelected, "DisablePanningWhenColonistIsSelected", true);
+        Scribe_Values.Look(ref ArchitectMenuMode, "ArchitectMenuMode", ArchitectMenuMode.ToggleOnClick);
+        Scribe_Values.Look(ref UiHidingMode, "UiHidingMode", UiHidingMode.AllUi);
+        Scribe_Values.Look(ref DragDelayMs, "DragDelayMs", 0);
     }
 }

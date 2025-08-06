@@ -12,11 +12,14 @@
   <Merthsoft.MouseDollyMapper.CurrentDollyButton>Botón actual de arrastre: {0}</Merthsoft.MouseDollyMapper.CurrentDollyButton>
   <Merthsoft.MouseDollyMapper.SetDollyButton>Configurar botón de arrastre</Merthsoft.MouseDollyMapper.SetDollyButton>
   <Merthsoft.MouseDollyMapper.ClickAnyMouseButton>Haz clic en cualquier botón del ratón.</Merthsoft.MouseDollyMapper.ClickAnyMouseButton>
+  
   <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>Desactivar arrastre cuando un colono esté seleccionado.</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
+  <Merthsoft.MouseDollyMapper.DragDetectionDelay>Retraso en la detección del arrastre: {0} ms</Merthsoft.MouseDollyMapper.DragDetectionDelay>
   
   <Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>Modo del menú de arquitectura:</Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>
   <Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>Predeterminado (cambiar al presionar el ratón)</Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>
   <Merthsoft.MouseDollyMapper.ArchitectMenuMode.Disable>Desactivado</Merthsoft.MouseDollyMapper.ArchitectMenuMode.Disable>
+  
   <Merthsoft.MouseDollyMapper.ArchitectMenuMode.ToggleOnClick>Cambiar al hacer clic (soltar ratón sin arrastrar)</Merthsoft.MouseDollyMapper.ArchitectMenuMode.ToggleOnClick>
 
   <Merthsoft.MouseDollyMapper.UiHidingModeLabel>Modo de ocultar la interfaz:</Merthsoft.MouseDollyMapper.UiHidingModeLabel>

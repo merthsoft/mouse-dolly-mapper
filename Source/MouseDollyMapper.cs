@@ -16,8 +16,9 @@ public class MouseDollyMapper : Mod
 {
     private static MouseDollyMapperSettings Settings;
 
-    public static int MouseDollyButton => Settings.MouseDollyButton;
-    
+    public static int MouseDollyButton => Settings.MouseDollyButton; 
+    public static int DragDelayTicks => (int)(Settings.DragDelayMs / 1000.0 * 60.0);
+
     public static bool HideMainUiButtons()
         => Settings.UiHidingMode == UiHidingMode.AllUi
         && MouseButtonTracker.HasDragged();
@@ -148,6 +149,9 @@ public class MouseDollyMapper : Mod
         listing.CheckboxLabeled(
             label: "Merthsoft.MouseDollyMapper.DisableWhenColonistSelected".Translate(), 
             checkOn: ref Settings.DisablePanningWhenColonistIsSelected);
+
+        listing.Label("Merthsoft.MouseDollyMapper.DragDetectionDelay".Translate(Settings.DragDelayMs));
+        Settings.DragDelayMs = (int)listing.Slider(Settings.DragDelayMs, 0, 2500);
 
         listing.GapLine();
 

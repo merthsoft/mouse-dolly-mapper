@@ -12,8 +12,10 @@
   <Merthsoft.MouseDollyMapper.CurrentDollyButton>Aktuální tlačítko pro posun kamery: {0}</Merthsoft.MouseDollyMapper.CurrentDollyButton>
   <Merthsoft.MouseDollyMapper.SetDollyButton>Nastavit tlačítko pro posun kamery</Merthsoft.MouseDollyMapper.SetDollyButton>
   <Merthsoft.MouseDollyMapper.ClickAnyMouseButton>Klikněte na libovolné tlačítko myši...</Merthsoft.MouseDollyMapper.ClickAnyMouseButton>
-  <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>Zakázat posun kamery, pokud je vybrán kolonista.</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
   
+  <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>Zakázat posun kamery, pokud je vybrán kolonista.</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
+  <Merthsoft.MouseDollyMapper.DragDetectionDelay>Zpoždění detekce tažení: {0} ms</Merthsoft.MouseDollyMapper.DragDetectionDelay>
+
   <Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>Režim architektonického menu:</Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>
   <Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>Vanilla (přepnout při stisku myši)</Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>
   <Merthsoft.MouseDollyMapper.ArchitectMenuMode.Disable>Zakázáno</Merthsoft.MouseDollyMapper.ArchitectMenuMode.Disable>

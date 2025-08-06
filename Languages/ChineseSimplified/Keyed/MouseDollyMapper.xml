@@ -12,7 +12,9 @@
   <Merthsoft.MouseDollyMapper.CurrentDollyButton>当前拖拽按钮：{0}</Merthsoft.MouseDollyMapper.CurrentDollyButton>
   <Merthsoft.MouseDollyMapper.SetDollyButton>设置拖拽按钮</Merthsoft.MouseDollyMapper.SetDollyButton>
   <Merthsoft.MouseDollyMapper.ClickAnyMouseButton>点击任意鼠标按钮。</Merthsoft.MouseDollyMapper.ClickAnyMouseButton>
+  
   <Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>当选择殖民者时禁用拖拽。</Merthsoft.MouseDollyMapper.DisableWhenColonistSelected>
+  <Merthsoft.MouseDollyMapper.DragDetectionDelay>拖动检测延迟：{0} 毫秒</Merthsoft.MouseDollyMapper.DragDetectionDelay>
 
   <Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>建筑菜单模式：</Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel>
   <Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>原版（鼠标按下时切换）</Merthsoft.MouseDollyMapper.ArchitectMenuMode.Vanilla>
