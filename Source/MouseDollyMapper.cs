@@ -151,7 +151,7 @@ public class MouseDollyMapper : Mod
             checkOn: ref Settings.DisablePanningWhenColonistIsSelected);
 
         listing.Label("Merthsoft.MouseDollyMapper.DragDetectionDelay".Translate(Settings.DragDelayMs));
-        Settings.DragDelayMs = (int)listing.Slider(Settings.DragDelayMs, 0, 2500);
+        Settings.DragDelayMs = (int)listing.Slider(Settings.DragDelayMs, 0, 1000);
 
         listing.GapLine();
 
