@@ -1,4 +1,4 @@
-﻿using Merthsoft.MouseDollyMapper.Enums;
+using Merthsoft.MouseDollyMapper.Enums;
 using UnityEngine;
 using Verse;
 
@@ -7,6 +7,8 @@ namespace Merthsoft.MouseDollyMapper;
 public class MouseDollyMapperSettings : ModSettings
 {
     public int MouseDollyButton = 2;
+    public KeyCode DollyKey = KeyCode.None;
+    public bool DisableDollying = false;
     public bool DisablePanningWhenColonistIsSelected = true;
     public ArchitectMenuMode ArchitectMenuMode = ArchitectMenuMode.Disable;
     public UiHidingMode UiHidingMode = UiHidingMode.AllUi;
@@ -15,6 +17,8 @@ public class MouseDollyMapperSettings : ModSettings
     public override void ExposeData()
     {
         Scribe_Values.Look(ref MouseDollyButton, "MouseDollyButton", 2);
+        Scribe_Values.Look(ref DollyKey, "DollyKey", KeyCode.None);
+        Scribe_Values.Look(ref DisableDollying, "DisableDollying", false);
         Scribe_Values.Look(ref DisablePanningWhenColonistIsSelected, "DisablePanningWhenColonistIsSelected", true);
         Scribe_Values.Look(ref ArchitectMenuMode, "ArchitectMenuMode", ArchitectMenuMode.ToggleOnClick);
         Scribe_Values.Look(ref UiHidingMode, "UiHidingMode", UiHidingMode.AllUi);

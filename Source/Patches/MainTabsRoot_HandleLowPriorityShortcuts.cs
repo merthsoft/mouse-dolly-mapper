@@ -14,7 +14,7 @@ public static class MainTabsRoot_HandleLowPriorityShortcuts
 {
     public static bool Prefix(MainTabsRoot __instance)
     {
-        if (MouseDollyMapper.MouseDollyButton != 1 || Event.current.button != 1)
+        if (!MouseDollyMapper.CanDolly || !MouseDollyMapper.UsesRightMouse || Event.current.button != 1)
             return true;
 
         return !MouseDollyMapper.SkipRightClickOnWorldMap(__instance);

@@ -1,64 +1,66 @@
-﻿using UnityEngine;
+using System.Diagnostics;
+using UnityEngine;
 using Verse;
 
 namespace Merthsoft.MouseDollyMapper;
 
-public class MouseButtonTracker(Game _) : GameComponent
+public class MouseButtonTracker : GameComponent
 {
-    private static bool ButtonHeld = false;
-    private static bool DragStart = false;
-    private static Vector2 LastPosition = Vector2.zero;
-    private static int ButtonDownTick = -1;
+    private static bool ButtonHeld;
+    private static bool DragStart;
+    private static Vector2 LastPosition;
+    private static Vector2 CurrentDelta;
+    private static long ButtonDownTime;
+
+    public MouseButtonTracker(Game game) => Reset();
+
+    public static void Reset()
+    {
+        ButtonHeld = DragStart = false;
+        CurrentDelta = Vector2.zero;
+    }
 
     public override void GameComponentUpdate()
     {
-        bool currentlyHeld;
-        try
-        {
-            currentlyHeld = Input.GetMouseButton(MouseDollyMapper.MouseDollyButton);
-        }
-        catch
-        {
-            currentlyHeld = false;
-        }
-
+        var currentlyHeld = MouseDollyMapper.CanDolly && MouseDollyMapper.BindingHeld();
         if (currentlyHeld && !ButtonHeld)
         {
-            ButtonDownTick = Find.TickManager.TicksGame;
-        }
-        else if (!currentlyHeld)
-        {
-            ButtonDownTick = -1;
+            ButtonDownTime = Stopwatch.GetTimestamp();
+            LastPosition = UI.MousePositionOnUIInverted;
             DragStart = false;
         }
-
+        else if (!currentlyHeld)
+            Reset();
         ButtonHeld = currentlyHeld;
     }
 
     public static bool IsMouseDragged()
     {
-        if (!ButtonHeld || !DragDelayPassed())
+        CurrentDelta = Vector2.zero;
+        if (!ButtonHeld || !MouseDollyMapper.CanDolly)
             return false;
 
-        var now = GetMousePosition();
-        var moved = now != LastPosition;
+        var now = UI.MousePositionOnUIInverted;
+        var delta = now - LastPosition;
         LastPosition = now;
-        DragStart |= moved;
-
-        return moved;
+        if (!DragDelayPassed())
+            return false;
+        CurrentDelta = delta;
+        DragStart |= delta != Vector2.zero;
+        return delta != Vector2.zero;
     }
+
+    public static Vector2 DollyDelta() => CurrentDelta;
+
+    // Keep the origin current when vanilla blocks motion over a window or modal UI.
+    public static void FinishCameraEvent() => LastPosition = UI.MousePositionOnUIInverted;
 
     public static bool HasDragged()
-        => ButtonHeld && DragStart && DragDelayPassed();
+        => MouseDollyMapper.CanDolly && ButtonHeld && DragStart && DragDelayPassed();
 
     private static bool DragDelayPassed()
-    {
-        if (ButtonDownTick < 0)
-            return false;
+        => DelayPassed(Stopwatch.GetElapsedTime(ButtonDownTime).TotalMilliseconds, MouseDollyMapper.DragDelayMs);
 
-        return (Find.TickManager.TicksGame - ButtonDownTick) >= MouseDollyMapper.DragDelayTicks;
-    }
-
-    private static Vector2 GetMousePosition()
-        => Event.current != null ? Event.current.mousePosition : (Vector2)Input.mousePosition;
+    // Pure timing predicate: unaffected by paused simulation or simulation speed.
+    internal static bool DelayPassed(double elapsedMs, int delayMs) => elapsedMs >= delayMs;
 }

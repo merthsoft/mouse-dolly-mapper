@@ -5,7 +5,7 @@ using RimWorld;
 using RimWorld.Planet;
 using System;
 using System.Reflection;
-using System.Runtime;
+using System.Linq;
 using UnityEngine;
 using Verse;
 using Verse.Steam;
@@ -17,7 +17,23 @@ public class MouseDollyMapper : Mod
     private static MouseDollyMapperSettings Settings;
 
     public static int MouseDollyButton => Settings.MouseDollyButton; 
-    public static int DragDelayTicks => (int)(Settings.DragDelayMs / 1000.0 * 60.0);
+    public static int DragDelayMs => Settings.DragDelayMs;
+    private static bool CapturingBinding;
+    public static bool UsesRightMouse => Settings.DollyKey == KeyCode.None && MouseDollyButton == 1;
+    public static bool CanDolly => !Settings.DisableDollying && !CapturingBinding
+        && !SteamDeck.IsSteamDeck
+        && !(Settings.DisablePanningWhenColonistIsSelected && Find.Selector.AnyPawnSelected);
+
+    public static bool BindingHeld()
+    {
+        try
+        {
+            return Settings.DollyKey == KeyCode.None
+                ? Input.GetMouseButton(MouseDollyButton)
+                : GUIUtility.keyboardControl == 0 && !Find.WindowStack.AnySearchWidgetFocused && Input.GetKey(Settings.DollyKey);
+        }
+        catch { return false; }
+    }
 
     public static bool HideMainUiButtons()
         => Settings.UiHidingMode == UiHidingMode.AllUi
@@ -37,7 +53,7 @@ public class MouseDollyMapper : Mod
 
     public static bool SkipRightClickOnWorldMap(MainTabsRoot mainTabsRoot)
     {
-        if (!(MouseDollyButton == 1 && Event.current.button == 1))
+        if (!CanDolly || !UsesRightMouse || Event.current.button != 1)
             return false;
 
         switch (Settings.ArchitectMenuMode)
@@ -80,9 +96,7 @@ public class MouseDollyMapper : Mod
     }
 
     public static bool DollyButtonPressed()
-        => !SteamDeck.IsSteamDeck
-        && MouseButtonTracker.IsMouseDragged()
-        && !(Settings.DisablePanningWhenColonistIsSelected && Find.Selector.AnyPawnSelected);
+        => CanDolly && MouseButtonTracker.IsMouseDragged();
 
     public MouseDollyMapper(ModContentPack content) : base(content)
     {
@@ -104,46 +118,42 @@ public class MouseDollyMapper : Mod
         _ => "Merthsoft.MouseDollyMapper.ButtonGeneric".Translate(i),
     };
 
-    private bool waitingForClick = false;
+    private string bindingError;
     public override void DoSettingsWindowContents(Rect inRect)
     {
         var listing = new Listing_Standard();
         listing.Begin(inRect);
+        var disabledBefore = Settings.DisableDollying;
+        listing.CheckboxLabeled("Merthsoft.MouseDollyMapper.DisableDollying".Translate(), ref Settings.DisableDollying);
+        if (disabledBefore != Settings.DisableDollying)
+            MouseButtonTracker.Reset();
 
-        listing.Label("Merthsoft.MouseDollyMapper.CurrentDollyButton".Translate(ButtonName(Settings.MouseDollyButton)));
-
-        if (!waitingForClick)
+        var bindingName = Settings.DollyKey == KeyCode.None ? ButtonName(Settings.MouseDollyButton) : Settings.DollyKey.ToString();
+        listing.Label("Merthsoft.MouseDollyMapper.CurrentDollyBinding".Translate(bindingName));
+        if (!CapturingBinding)
         {
-            if (listing.ButtonText("Merthsoft.MouseDollyMapper.SetDollyButton".Translate()))
+            if (listing.ButtonText("Merthsoft.MouseDollyMapper.SetDollyBinding".Translate()))
             {
-                waitingForClick = true;
+                CapturingBinding = true;
+                bindingError = null;
+                MouseButtonTracker.Reset();
             }
         }
         else
         {
-            listing.Label("Merthsoft.MouseDollyMapper.ClickAnyMouseButton".Translate());
-            if (waitingForClick && Event.current.type == EventType.MouseDown)
-            {
-                Settings.MouseDollyButton = Event.current.button;
-                waitingForClick = false;
-                Event.current.Use();
-            }
+            listing.Label("Merthsoft.MouseDollyMapper.CaptureBinding".Translate());
+            CaptureBinding(Event.current);
         }
+        if (bindingError != null)
+            listing.Label(bindingError);
 
-        if (Settings.MouseDollyButton == 1)
+        if (UsesRightMouse && !Settings.DisableDollying)
         {
             listing.Label("Merthsoft.MouseDollyMapper.ArchitectMenuModeLabel".Translate());
-
             foreach (ArchitectMenuMode mode in Enum.GetValues(typeof(ArchitectMenuMode)))
-            {
-                var isSelected = (Settings.ArchitectMenuMode == mode);
-                if (listing.RadioButton("\t" + ArchitectMenuModeString(mode), isSelected))
-                {
+                if (listing.RadioButton("\t" + ArchitectMenuModeString(mode), Settings.ArchitectMenuMode == mode))
                     Settings.ArchitectMenuMode = mode;
-                }
-            }
         }
-
         listing.GapLine();
 
         listing.CheckboxLabeled(
@@ -170,6 +180,55 @@ public class MouseDollyMapper : Mod
         }
 
         listing.End();
+    }
+
+    private void CaptureBinding(Event ev)
+    {
+        if (ev.type == EventType.KeyDown && ev.keyCode == KeyCode.Escape)
+        {
+            CapturingBinding = false;
+            bindingError = null;
+            ev.Use();
+        }
+        else if (ev.type == EventType.MouseDown)
+        {
+            Settings.MouseDollyButton = ev.button;
+            Settings.DollyKey = KeyCode.None;
+            CapturingBinding = false;
+            bindingError = null;
+            ev.Use();
+        }
+        else if (ev.type == EventType.KeyDown && ev.keyCode != KeyCode.None)
+        {
+            var key = ev.keyCode;
+            var conflict = BindingConflict(key);
+            if (!CanBindKey(key, ev.modifiers) || conflict != null)
+                bindingError = "Merthsoft.MouseDollyMapper.BindingConflict".Translate(conflict?.LabelCap.ToString() ?? key.ToString());
+            else
+            {
+                Settings.DollyKey = key;
+                CapturingBinding = false;
+                bindingError = null;
+            }
+            ev.Use();
+        }
+    }
+
+    internal static bool CanBindKey(KeyCode key, EventModifiers modifiers)
+        => key != KeyCode.None && key != KeyCode.Escape
+        && (modifiers & (EventModifiers.Shift | EventModifiers.Control | EventModifiers.Alt | EventModifiers.Command)) == 0
+        && key is not (KeyCode.LeftShift or KeyCode.RightShift or KeyCode.LeftControl or KeyCode.RightControl
+            or KeyCode.LeftAlt or KeyCode.RightAlt or KeyCode.LeftCommand or KeyCode.RightCommand);
+
+    internal static KeyBindingDef BindingConflict(KeyCode key)
+        => DefDatabase<KeyBindingDef>.AllDefsListForReading.FirstOrDefault(def =>
+            KeyPrefs.KeyPrefsData.GetBoundKeyCode(def, KeyPrefs.BindingSlot.A) == key ||
+            KeyPrefs.KeyPrefsData.GetBoundKeyCode(def, KeyPrefs.BindingSlot.B) == key);
+    public override void WriteSettings()
+    {
+        CapturingBinding = false;
+        MouseButtonTracker.Reset();
+        base.WriteSettings();
     }
 
     private static string ArchitectMenuModeString(ArchitectMenuMode mode)

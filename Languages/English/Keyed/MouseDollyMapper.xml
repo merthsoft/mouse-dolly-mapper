@@ -29,4 +29,9 @@
   <Merthsoft.MouseDollyMapper.UiHidingMode.ArchitectMenu>Architect menu</Merthsoft.MouseDollyMapper.UiHidingMode.ArchitectMenu>
   <Merthsoft.MouseDollyMapper.UiHidingMode.OpenTab>Open tab</Merthsoft.MouseDollyMapper.UiHidingMode.OpenTab>
   <Merthsoft.MouseDollyMapper.UiHidingMode.AllUi>All UI</Merthsoft.MouseDollyMapper.UiHidingMode.AllUi>
+  <Merthsoft.MouseDollyMapper.DisableDollying>Disable mouse-drag dollying (including the keyboard binding).</Merthsoft.MouseDollyMapper.DisableDollying>
+  <Merthsoft.MouseDollyMapper.CurrentDollyBinding>Current dolly binding: {0}</Merthsoft.MouseDollyMapper.CurrentDollyBinding>
+  <Merthsoft.MouseDollyMapper.SetDollyBinding>Set dolly binding</Merthsoft.MouseDollyMapper.SetDollyBinding>
+  <Merthsoft.MouseDollyMapper.CaptureBinding>Click a mouse button or press an unbound key. Escape cancels. Modifier combinations are not supported.</Merthsoft.MouseDollyMapper.CaptureBinding>
+  <Merthsoft.MouseDollyMapper.BindingConflict>Cannot bind {0}: the key is already bound or uses modifiers. Choose another key.</Merthsoft.MouseDollyMapper.BindingConflict>
 </LanguageData>

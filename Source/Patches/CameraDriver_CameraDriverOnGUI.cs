@@ -12,6 +12,8 @@ namespace Merthsoft.MouseDollyMapper.Patches;
 [HarmonyPatch(typeof(CameraDriver), nameof(CameraDriver.CameraDriverOnGUI))]
 public static class CameraDriver_CameraDriverOnGUI
 {
+    static void Postfix() => MouseButtonTracker.FinishCameraEvent();
+
     static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         var codes = new CodeMatcher(instructions);
@@ -19,7 +21,7 @@ public static class CameraDriver_CameraDriverOnGUI
         var mouseDragMethod = AccessTools.Method(typeof(UnityGUIBugsFixer), nameof(UnityGUIBugsFixer.MouseDrag));
         var isSteamDeckGetter = AccessTools.PropertyGetter(typeof(SteamDeck), nameof(SteamDeck.IsSteamDeck));
         var replacementMethod = AccessTools.Method(typeof(MouseDollyMapper), nameof(MouseDollyMapper.DollyButtonPressed));
-        var getSelector = AccessTools.Method(typeof(Find), nameof(Find.Selector));
+        var getSelector = AccessTools.PropertyGetter(typeof(Find), nameof(Find.Selector));
         var getAnyPawnSelector = AccessTools.PropertyGetter(typeof(Selector), nameof(Selector.AnyPawnSelected));
 
         CodeMatch[] matches = [
@@ -51,6 +53,15 @@ public static class CameraDriver_CameraDriverOnGUI
             ]
         );
 
+        // Keyboard-held panning must use pointer displacement even on non-MouseDrag GUI events.
+        codes.Start().MatchStartForward(new CodeMatch(OpCodes.Call,
+            AccessTools.PropertyGetter(typeof(UnityGUIBugsFixer), nameof(UnityGUIBugsFixer.CurrentEventDelta))));
+        if (!codes.IsValid)
+        {
+            Log.Error("Could not find camera dolly delta in CameraDriverOnGUI.");
+            return instructions;
+        }
+        codes.SetOperandAndAdvance(AccessTools.Method(typeof(MouseButtonTracker), nameof(MouseButtonTracker.DollyDelta)));
         return codes.InstructionEnumeration();
     }
 }
