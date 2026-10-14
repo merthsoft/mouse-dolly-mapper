@@ -54,10 +54,20 @@ static class Program
         position = new Vector2(100,100);
         tracker.GameComponentUpdate();
         Assert(!MouseDollyMapper.DollyButtonPressed(), "Press must not jump from stale pointer origin");
+        Event.current = new Event {type = EventType.Repaint};
         position = new Vector2(110,120);
         Assert(MouseDollyMapper.DollyButtonPressed(), "Held keyboard plus pointer movement must pan without MouseDrag");
         Assert(MouseButtonTracker.DollyDelta() == new Vector2(10,20), "Pointer displacement and sign");
+        MouseButtonTracker.FinishCameraEvent();
         Assert(!MouseDollyMapper.DollyButtonPressed(), "Repeated GUI call must not double-consume displacement");
+        Event.current = new Event {type = EventType.Layout};
+        MouseButtonTracker.FinishCameraEvent();
+        Event.current = new Event {type = EventType.Repaint};
+        position = new Vector2(115,125);
+        Assert(MouseDollyMapper.DollyButtonPressed() && MouseButtonTracker.DollyDelta() == new Vector2(5,5),
+            "Layout postfix cannot consume pointer motion arriving before Repaint");
+        MouseButtonTracker.FinishCameraEvent();
+        Assert(!MouseDollyMapper.DollyButtonPressed(), "Repaint postfix runs after delta delivery and prevents duplicate delivery");
         Assert(MouseDollyMapper.HideMainUiButtons(), "Dragging hides UI when enabled");
         settings.DisableDollying = true;
         Assert(!MouseDollyMapper.DollyButtonPressed() && !MouseDollyMapper.HideMainUiButtons() && !MouseDollyMapper.HideOpenTab(),
